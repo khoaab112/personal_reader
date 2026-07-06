@@ -3,6 +3,12 @@
 ## Dự án này là gì?
 Personal Reader là một ứng dụng đọc sách điện tử (PDF) cá nhân, được xây dựng bằng công nghệ web hiện đại (Vue 3, TypeScript, Vite) kết hợp với Tauri để đóng gói thành ứng dụng desktop. 
 
+## Kiến trúc hệ thống (Architecture)
+Dự án này **không sử dụng backend server truyền thống** (như Node.js, Python hay Cloud Database). Thay vào đó, nó hoạt động theo mô hình ứng dụng Desktop nội bộ (Local Desktop App):
+- **Frontend (Giao diện người dùng):** Sử dụng Vue 3, TypeScript, Vite, và Naive UI.
+- **Backend (Xử lý Core & Lưu trữ):** Được đảm nhiệm bởi **Tauri** (viết bằng ngôn ngữ Rust). Tauri giúp frontend giao tiếp trực tiếp với hệ điều hành, quản lý file system, và sử dụng database cục bộ (như SQLite) để lưu trữ thư viện sách và ghi chú. 
+- *Lưu ý:* Khi chạy trên môi trường web preview, dữ liệu có thể được lưu trữ tạm thời (mock) thông qua IndexedDB/LocalStorage, nhưng khi build ra ứng dụng máy tính (Tauri), dữ liệu sẽ được lưu an toàn trên ổ cứng của bạn.
+
 ## Tại sao nó tồn tại?
 Dự án được tạo ra nhằm cung cấp một công cụ đọc sách PDF nhẹ, mượt mà và tập trung vào trải nghiệm cá nhân hóa. Nó giúp người dùng quản lý thư viện sách, ghi chú, đánh dấu trang và theo dõi tiến độ đọc một cách dễ dàng và hoàn toàn ngoại tuyến.
 
